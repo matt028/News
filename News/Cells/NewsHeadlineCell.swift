@@ -22,3 +22,12 @@ class NewsHeadlineCell: UITableViewCell {
     }
     
 }
+
+extension NewsHeadlineCell {
+    
+    func configure(vm: ArticleViewModel) {
+        self.titleLbl.text = vm.title
+        self.descriptionLbl.text = vm.description
+        vm.image { self.headlineImgView.image = $0 }
+    }
+}

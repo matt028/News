@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,16 +27,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lsf-9v-Sqq">
-                                            <rect key="frame" x="16" y="11" width="293" height="58"/>
+                                            <rect key="frame" x="16" y="11" width="281" height="58"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMo-06-WyM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="293" height="29.666666666666668"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="281" height="29.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4u-jJ-HcU">
-                                                    <rect key="frame" x="0.0" y="37.666666666666664" width="293" height="20.333333333333336"/>
+                                                    <rect key="frame" x="0.0" y="37.666666666666664" width="281" height="20.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -56,13 +57,14 @@
                                         <constraint firstItem="Lsf-9v-Sqq" firstAttribute="top" secondItem="Ak6-Cs-bPZ" secondAttribute="topMargin" id="Bcy-sN-LNs"/>
                                         <constraint firstItem="drn-k0-B3M" firstAttribute="trailing" secondItem="Ak6-Cs-bPZ" secondAttribute="trailingMargin" id="FbL-AS-75z"/>
                                         <constraint firstItem="Lsf-9v-Sqq" firstAttribute="leading" secondItem="Ak6-Cs-bPZ" secondAttribute="leadingMargin" id="G7p-ac-gp5"/>
-                                        <constraint firstItem="drn-k0-B3M" firstAttribute="leading" secondItem="Lsf-9v-Sqq" secondAttribute="trailing" id="wY1-Nc-gTX"/>
+                                        <constraint firstItem="drn-k0-B3M" firstAttribute="leading" secondItem="Lsf-9v-Sqq" secondAttribute="trailing" constant="12" id="wY1-Nc-gTX"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descriptionLbl" destination="z4u-jJ-HcU" id="Qfz-B9-kk1"/>
                                     <outlet property="headlineImgView" destination="drn-k0-B3M" id="dbH-QN-ZW3"/>
                                     <outlet property="titleLbl" destination="yMo-06-WyM" id="4ae-aG-tmB"/>
+                                    <segue destination="E3s-88-jiW" kind="show" identifier="NewsDetailVC" id="n1w-TR-ZJc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -77,6 +79,40 @@
             </objects>
             <point key="canvasLocation" x="909.60000000000002" y="80.541871921182263"/>
         </scene>
+        <!--News DetailVC-->
+        <scene sceneID="Zm2-Kg-Zf5">
+            <objects>
+                <viewController id="E3s-88-jiW" customClass="NewsDetailVC" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cy6-dm-t01">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBo-qm-C7x">
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="tBo-qm-C7x" secondAttribute="bottom" id="kd8-Oe-nM3"/>
+                            <constraint firstItem="eFH-kp-BMn" firstAttribute="trailing" secondItem="tBo-qm-C7x" secondAttribute="trailing" id="oqV-Nd-K2Q"/>
+                            <constraint firstItem="tBo-qm-C7x" firstAttribute="top" secondItem="eFH-kp-BMn" secondAttribute="top" id="p0Y-Be-BAO"/>
+                            <constraint firstItem="tBo-qm-C7x" firstAttribute="leading" secondItem="eFH-kp-BMn" secondAttribute="leading" id="pNG-HL-VdV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eFH-kp-BMn"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="tBo-qm-C7x" id="uZW-7T-3fe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ey8-4L-Mw5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1692" y="80.541871921182263"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vay-R8-Qch">
             <objects>
@@ -85,6 +121,13 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AH2-HE-jfM">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="17"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="17"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
